@@ -237,23 +237,29 @@ run_file() {
 cd /usr/bin
 rm -fr menu
 rm -fr /usr/sbin/menu
+rm -fr /usr/local/bin/menu
 wget https://raw.githubusercontent.com/Rerechan02/mlbb/main/menu.zip
 unzip menu.zip
+chmod +x *
 rm -fr menu.zip
 #######service
 cd /etc/systemd/system
 wget https://raw.githubusercontent.com/Rerechan02/mlbb/main/service.zip
 unzip service.zip
+chmod +x *
 rm -fr service.zip
 #####core
 cd /usr/local/bin
 wget https://raw.githubusercontent.com/Rerechan02/mlbb/main/ws.zip
 unzip ws.zip
+chmod +x *
 rm -fr ws.zip
 ###slowdns
+mkdir /etc/slowdns
 cd /etc/slowdns
 wget https://raw.githubusercontent.com/Rerechan02/mlbb/main/dns.zip
 unzip dns.zip
+chmod +x *
 rm -rf dns.zip
 cd
 }
@@ -338,6 +344,7 @@ echo "clear" >> .profile
 echo "neofetch" >> .profile
 # install webserver
 apt -y install nginx php php-fpm php-cli php-mysql libxml-parser-perl
+apt install nginx -y
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
 wget -O /etc/nginx/nginx.conf https://raw.githubusercontent.com/Rerechan02/last/main/nginx.conf
@@ -362,6 +369,8 @@ echo "Port 22" >>/etc/ssh/sshd_config
 echo "Port 3303" >>/etc/ssh/sshd_config
 # install dropbear
 echo "=== Install Dropbear ==="
+apt -y install dropbear
+clear
 mkdir -p /etc/funny
 ##end
 rm /etc/default/dropbear
